@@ -1,0 +1,8 @@
+api keys:
+
+[1]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNb3ZpZXMgQVBJIiwiaWF0IjoxNjE5NTE5MTY3LCJleHAiOjE2NTEwNTUxNjcsInN1YiI6IlF1YW50aWZ5IENhcGl0YWwifQ.EN0C5amNbgzR9-l2OSViyVVTZENvPoli5P-_hyRPfD4
+[2]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNb3ZpZXMgQVBJIiwiaWF0IjoxNjE5NTE5MTkwLCJleHAiOjE2NTEwNTUxOTAsInN1YiI6IlF1YW50aWZ5IENhcGl0YWwifQ.eiF68Gb18jBBLv4UmJPcz81xDNbMbJFmPF8tqq8M7FM
+
+NOTE: These keys are to be passed in the header with the following key, value pair:
+	- key: Authorization
+	- value: your api key

@@ -1,0 +1,101 @@
+swagger: "2.0"
+info:
+  # description: IMDB REST API which offers functionalities such as providing complete list of movies, various sorting orders are also available. Also, provide an option to search the movie by name. 
+  version: "1.0.0"
+  title: IMDB REST API
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /
+
+# Paths supported by the server application
+paths:
+  /completelist:
+    get:
+      operationId: movies.read_all
+      parameters:
+        - name: sortby
+          description: sort message
+          in: query
+          type: string
+          required: false
+        - name: order
+          description: order
+          in: query
+          type: string
+          required: false
+      tags:
+        - Movies
+      summary: Get the complete list of movies, sorting options available in ascending and descending order.
+      description: Get the complete list of movies, sorting parameters namely Name, Year, Rating also available. Ordering possible in ascending and descending order. Ordering is defaulted to Ascending.
+      responses:
+        '200':
+          description: Successfully read all the movies
+          schema:
+            type: array
+            items:
+              properties:
+                name:
+                  type: string
+                  description: Name of the movie
+                year:
+                  type: integer
+                  description: Year of release of the movie
+                rating:
+                  type: number
+                  description: Rating of the respective movie
+                thumbnail_url:
+                  type: string
+                  description: URL of the movie thumbnail
+        '400':
+          description: Bad Request. Possible reasons include invalid parameters being passed.  
+      security:
+        - KeyAuth: []
+  /search/name:
+    get:
+      operationId: movies.searchbyname
+      parameters:
+        - name: value
+          description: Name of the movie that has to be searched
+          in: query
+          type: string
+          required: True
+      tags:
+        - Movies
+      summary: Search by Name
+      description: Searches the movies which have a particular Name
+      responses:
+        '200':
+          description: Successfully found movies
+          schema:
+            type: array
+            items:
+              properties:
+                name:
+                  type: string
+                  description: Name of the movie
+                year:
+                  type: integer
+                  description: Year of release of the movie
+                rating:
+                  type: number
+                  description: Rating of the respective movie
+                thumbnail_url:
+                  type: string
+                  description: URL of the movie thumbnail
+        '404':
+          description: No movie found
+      security:
+        - KeyAuth: []
+
+securityDefinitions:
+  KeyAuth:
+    type: apiKey
+    name: Authorization
+    x-apikeyInfoFunc: auth.decode_token
+    in: header
+  
+
+
